@@ -5,39 +5,47 @@ void main() {
   return runApp(
     MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.black45,
         appBar: AppBar(
           centerTitle: true,
-          title: Text('Magic 8 Ball'),
+          title: Text('Magic 8 Ball, son.'),
           backgroundColor: Colors.deepPurple,
         ),
-        body: Fortune(),
+        body: DicePage(),
       ),
     ),
   );
 }
 
-class Fortune extends StatefulWidget {
+class DicePage extends StatefulWidget {
   @override
-  _FortuneState createState() => _FortuneState();
+  _DicePageState createState() => _DicePageState();
 }
 
-class _FortuneState extends State<Fortune> {
+class _DicePageState extends State<DicePage> {
+  int leftDiceNumber = 1;
+  int rightDiceNumber = 2;
+
   @override
   Widget build(BuildContext context) {
-    void tellFortune() {
-      setState(() {});
+    void rollDice() {
+      setState(() {
+        leftDiceNumber = Random().nextInt(4) + 1;
+      });
     }
 
     return Center(
-      child: FlatButton(
-        onPressed: () {
-          tellFortune();
-        },
-        child: Card(
-          color: Colors.deepPurple,
-          child: Text("Hello"),
-        ),
+      child: Row(
+        children: <Widget>[
+          Expanded(
+            child: FlatButton(
+              onPressed: () {
+                rollDice();
+              },
+              child: Image.asset('images/ball$leftDiceNumber.png'),
+            ),
+          ),
+        ],
       ),
     );
   }
