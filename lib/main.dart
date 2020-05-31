@@ -8,7 +8,7 @@ void main() {
         backgroundColor: Colors.black45,
         appBar: AppBar(
           centerTitle: true,
-          title: Text('Magic 8 Ball, son.'),
+          title: Text('Magic 8 Ball App'),
           backgroundColor: Colors.deepPurple,
         ),
         body: DicePage(),
